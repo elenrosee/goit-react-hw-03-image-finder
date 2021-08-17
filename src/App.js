@@ -58,7 +58,7 @@ class App extends Component {
       })
       .finally(() => {
         this.setState({ loading: false });
-        if (picturesApiService.page >= 3) {
+        if (picturesApiService.page > 2) {
           window.scrollTo({
             top: document.documentElement.scrollHeight,
             behavior: "smooth",
@@ -74,6 +74,8 @@ class App extends Component {
 
     if (hits.length < 12) {
       this.setState({ loadMoreBtn: false });
+    } else {
+      this.setState({ loadMoreBtn: true });
     }
 
     this.setState((prevState) => {
